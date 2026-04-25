@@ -3,12 +3,11 @@
 **Branch:** feature/demo-website
 
 ## Shipped today
-- PR #1 merged: demo website (index.html) + initial Claude command templates (daily-sync.md, pr.md)
+- PR #1 merged: demo website + initial Claude command templates
+- Added eod.md, updated pr.md (dash style, gh pr create --web), updated daily-sync.md (safer git sync flow)
 
 ## In progress
-- `.claude/commands/pr.md` — added dash style rule and `gh pr create --web` section; uncommitted, needs push
-- `.claude/commands/daily-sync.md` — tweaked standup notes to ask if no handoff found; uncommitted, needs push
-- `.claude/commands/eod.md` — new EOD command file; untracked, needs commit and push
+- —
 
 ## Open PRs
 - —
@@ -24,5 +23,4 @@
 2. Get started on the architecture if approved
 
 ## Notes for future-me
-- —
-
+- I love myself
