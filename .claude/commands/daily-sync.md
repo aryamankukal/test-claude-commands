@@ -7,10 +7,16 @@ Run the steps below, then output a clean morning summary.
 # 1. Sync git
 
 Run these in order, narrating what each one returned:
-- `git fetch origin` — pull latest from remote
-- `git status` — confirm nothing is unexpectedly dirty before rebasing
-- `git rebase origin/main` — sync current branch with latest main
-- If the rebase produces conflicts, stop and flag them clearly. Don't try to resolve them automatically — list the conflicting files and tell me to resolve them.
+
+- `git fetch origin` — pull down all remote state without touching your working tree
+- `git status` — if there are uncommitted changes, stash them with `git stash` before continuing; restore with `git stash pop` after syncing
+- Ask: "Which branch do you want to work on today?" — don't assume it's the same as yesterday
+- Check out that branch if not already on it
+- `git log HEAD..origin/<branch> --oneline` — check if a teammate pushed to your branch while you were away; if yes, run `git pull --rebase origin <branch>` to bring their changes in before rebasing onto main
+- `git rebase origin/main` — sync your branch with latest main
+- `git log --oneline -10` — confirm the state looks right
+
+If the rebase produces conflicts, stop and flag them clearly. Don't try to resolve them automatically — list the conflicting files and tell me to resolve them.
 
 # 2. Recent activity
 
@@ -38,7 +44,7 @@ If neither file exists, just say so — don't fabricate context.
 
 # 5. Standup notes
 
-Generate standup bullets based on yesterday's git activity (commits since yesterday across all my branches, PRs opened/merged, review activity) plus `handoff.md` next steps if present.
+Generate standup bullets based on yesterday's git activity (commits since yesterday across all my branches, PRs opened/merged, review activity) plus `handoff.md` next steps for today if present. If nothing imn handoff then ask me.
 
 Format: 1-3 bullets per section, max. Each bullet should be specific (mention the actual feature, ticket, or PR — not "worked on stuff"). Skip a section entirely with "—" if nothing fits. Reference ticket/PR numbers where relevant.
 

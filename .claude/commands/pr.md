@@ -51,3 +51,14 @@ Before writing Why, check if the diff and commits give enough context. If they d
 
 - Reviewers skim. No filler. No AI-flavored phrases like "comprehensive", "robust", "leverages", "facilitates", "seamlessly".
 - After drafting, re-read the title alone — does it stand on its own in `git log`? If not, rewrite it.
+- Do not use em dashes (—) or en dashes (–). Use a hyphen or rewrite the sentence.
+
+# Opening the PR
+
+After drafting the description, push the branch if not already pushed, then run:
+
+```
+gh pr create --title "<title>" --body "<description>" --web
+```
+
+The `--web` flag opens the GitHub PR editor in the browser with the title and description pre-filled. The user can review and submit from there.
